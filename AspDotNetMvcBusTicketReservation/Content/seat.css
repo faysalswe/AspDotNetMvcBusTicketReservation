@@ -1,0 +1,60 @@
+﻿.button {
+    background-color: #008CBA;
+    border: none;
+    color: white;
+    padding: 8px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 3px 1px;
+    cursor: pointer;
+    height:45px;
+    width:65px;
+}
+
+.button2 {
+    background-color: white; 
+    color: black; 
+    border: 3px solid #008CBA;
+}
+
+.button2:hover {
+    background-color: #008CBA;
+    color: white;
+}
+
+.booked {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 11px 23px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 3px 1px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    height:45px;
+    width:65px;
+}
+.book {
+    background-color: #e7e7e7;
+    color: black;
+    cursor: not-allowed;
+}
+
+.fixed{
+    background-color:khaki; 
+    border: 1px solid #008CBA;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    height:45px;
+    width:65px;
+    cursor: not-allowed;
+
+}

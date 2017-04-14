@@ -1,0 +1,12 @@
+
+body {
+    background-image: url('../SiteIcon/background1.jpg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+
+.list{
+    color:darkblue;
+}

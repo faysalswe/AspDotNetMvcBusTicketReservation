@@ -1,0 +1,636 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AspMvcBusTicketReservationDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_Book">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fare" Type="money" />
+          <Property Name="Date" Type="date" />
+          <Property Name="TripId" Type="int" />
+          <Property Name="seatList" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" />
+          <Property Name="payment" Type="nvarchar" MaxLength="50" />
+          <Property Name="TransactionId" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tb_Bus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SerialNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Brand" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Model" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tb_Driver">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DriverSerial" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="15" />
+          <Property Name="Address" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tb_Route">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="Fare" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="Distance" Type="int" />
+        </EntityType>
+        <EntityType Name="tb_Trips">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="date" />
+          <Property Name="Time" Type="time" Precision="7" />
+          <Property Name="Route" Type="int" />
+          <Property Name="Bus" Type="int" />
+          <Property Name="Driver" Type="int" />
+          <Property Name="A1" Type="nvarchar" MaxLength="128" />
+          <Property Name="A2" Type="nvarchar" MaxLength="128" />
+          <Property Name="A3" Type="nvarchar" MaxLength="128" />
+          <Property Name="A4" Type="nvarchar" MaxLength="128" />
+          <Property Name="B1" Type="nvarchar" MaxLength="128" />
+          <Property Name="B2" Type="nvarchar" MaxLength="128" />
+          <Property Name="B3" Type="nvarchar" MaxLength="128" />
+          <Property Name="B4" Type="nvarchar" MaxLength="128" />
+          <Property Name="C1" Type="nvarchar" MaxLength="128" />
+          <Property Name="C2" Type="nvarchar" MaxLength="128" />
+          <Property Name="C3" Type="nvarchar" MaxLength="128" />
+          <Property Name="C4" Type="nvarchar" MaxLength="128" />
+          <Property Name="D1" Type="nvarchar" MaxLength="128" />
+          <Property Name="D2" Type="nvarchar" MaxLength="128" />
+          <Property Name="D3" Type="nvarchar" MaxLength="128" />
+          <Property Name="D4" Type="nvarchar" MaxLength="128" />
+          <Property Name="E1" Type="nvarchar" MaxLength="128" />
+          <Property Name="E2" Type="nvarchar" MaxLength="128" />
+          <Property Name="E3" Type="nvarchar" MaxLength="128" />
+          <Property Name="E4" Type="nvarchar" MaxLength="128" />
+          <Property Name="F1" Type="nvarchar" MaxLength="128" />
+          <Property Name="F2" Type="nvarchar" MaxLength="128" />
+          <Property Name="F3" Type="nvarchar" MaxLength="128" />
+          <Property Name="F4" Type="nvarchar" MaxLength="128" />
+          <Property Name="G1" Type="nvarchar" MaxLength="128" />
+          <Property Name="G2" Type="nvarchar" MaxLength="128" />
+          <Property Name="G3" Type="nvarchar" MaxLength="128" />
+          <Property Name="G4" Type="nvarchar" MaxLength="128" />
+          <Property Name="H1" Type="nvarchar" MaxLength="128" />
+          <Property Name="H2" Type="nvarchar" MaxLength="128" />
+          <Property Name="H3" Type="nvarchar" MaxLength="128" />
+          <Property Name="H4" Type="nvarchar" MaxLength="128" />
+          <Property Name="I1" Type="nvarchar" MaxLength="128" />
+          <Property Name="I2" Type="nvarchar" MaxLength="128" />
+          <Property Name="I3" Type="nvarchar" MaxLength="128" />
+          <Property Name="I4" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <Association Name="FK__tb_Book__TripId__4E88ABD4">
+          <End Role="tb_Trips" Type="Self.tb_Trips" Multiplicity="0..1" />
+          <End Role="tb_Book" Type="Self.tb_Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Trips">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tb_Book">
+              <PropertyRef Name="TripId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Book__UserId__4F7CD00D">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="tb_Book" Type="Self.tb_Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tb_Book">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Trips__Bus__29572725">
+          <End Role="tb_Bus" Type="Self.tb_Bus" Multiplicity="0..1" />
+          <End Role="tb_Trips" Type="Self.tb_Trips" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Bus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tb_Trips">
+              <PropertyRef Name="Bus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Trips__Driver__2A4B4B5E">
+          <End Role="tb_Driver" Type="Self.tb_Driver" Multiplicity="0..1" />
+          <End Role="tb_Trips" Type="Self.tb_Trips" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Driver">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tb_Trips">
+              <PropertyRef Name="Driver" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Trips__Route__2B3F6F97">
+          <End Role="tb_Route" Type="Self.tb_Route" Multiplicity="0..1" />
+          <End Role="tb_Trips" Type="Self.tb_Trips" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Route">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tb_Trips">
+              <PropertyRef Name="Route" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AspMvcBusTicketReservationDBModelStoreContainer">
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Book" EntityType="Self.tb_Book" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Bus" EntityType="Self.tb_Bus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Driver" EntityType="Self.tb_Driver" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Route" EntityType="Self.tb_Route" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Trips" EntityType="Self.tb_Trips" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__tb_Book__TripId__4E88ABD4" Association="Self.FK__tb_Book__TripId__4E88ABD4">
+            <End Role="tb_Trips" EntitySet="tb_Trips" />
+            <End Role="tb_Book" EntitySet="tb_Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Book__UserId__4F7CD00D" Association="Self.FK__tb_Book__UserId__4F7CD00D">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="tb_Book" EntitySet="tb_Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Trips__Bus__29572725" Association="Self.FK__tb_Trips__Bus__29572725">
+            <End Role="tb_Bus" EntitySet="tb_Bus" />
+            <End Role="tb_Trips" EntitySet="tb_Trips" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Trips__Driver__2A4B4B5E" Association="Self.FK__tb_Trips__Driver__2A4B4B5E">
+            <End Role="tb_Driver" EntitySet="tb_Driver" />
+            <End Role="tb_Trips" EntitySet="tb_Trips" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Trips__Route__2B3F6F97" Association="Self.FK__tb_Trips__Route__2B3F6F97">
+            <End Role="tb_Route" EntitySet="tb_Route" />
+            <End Role="tb_Trips" EntitySet="tb_Trips" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AspMvcBusTicketReservationDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tb_Book" Relationship="Self.FK__tb_Book__UserId__4F7CD00D" FromRole="AspNetUsers" ToRole="tb_Book" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fare" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="TripId" Type="Int32" />
+          <Property Name="seatList" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="payment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TransactionId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK__tb_Book__UserId__4F7CD00D" FromRole="tb_Book" ToRole="AspNetUsers" />
+          <NavigationProperty Name="tb_Trips" Relationship="Self.FK__tb_Book__TripId__4E88ABD4" FromRole="tb_Book" ToRole="tb_Trips" />
+        </EntityType>
+        <EntityType Name="Bus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SerialNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Brand" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tb_Trips" Relationship="Self.FK__tb_Trips__Bus__29572725" FromRole="tb_Bus" ToRole="tb_Trips" />
+        </EntityType>
+        <EntityType Name="Driver">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DriverSerial" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tb_Trips" Relationship="Self.FK__tb_Trips__Driver__2A4B4B5E" FromRole="tb_Driver" ToRole="tb_Trips" />
+        </EntityType>
+        <EntityType Name="Route">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Fare" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="Distance" Type="Int32" />
+          <NavigationProperty Name="tb_Trips" Relationship="Self.FK__tb_Trips__Route__2B3F6F97" FromRole="tb_Route" ToRole="tb_Trips" />
+        </EntityType>
+        <EntityType Name="Trip">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="Time" Type="Time" Precision="7" />
+          <Property Name="Route" Type="Int32" />
+          <Property Name="Bus" Type="Int32" />
+          <Property Name="Driver" Type="Int32" />
+          <Property Name="A1" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="A2" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="A3" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="A4" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="B1" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="B2" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="B3" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="B4" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="C1" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="C2" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="C3" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="C4" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="D1" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="D2" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="D3" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="D4" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="E1" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="E2" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="E3" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="E4" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="F1" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="F2" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="F3" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="F4" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="G1" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="G2" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="G3" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="G4" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="H1" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="H2" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="H3" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="H4" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="I1" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="I2" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="I3" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="I4" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tb_Book" Relationship="Self.FK__tb_Book__TripId__4E88ABD4" FromRole="tb_Trips" ToRole="tb_Book" />
+          <NavigationProperty Name="tb_Bus" Relationship="Self.FK__tb_Trips__Bus__29572725" FromRole="tb_Trips" ToRole="tb_Bus" />
+          <NavigationProperty Name="tb_Driver" Relationship="Self.FK__tb_Trips__Driver__2A4B4B5E" FromRole="tb_Trips" ToRole="tb_Driver" />
+          <NavigationProperty Name="tb_Route" Relationship="Self.FK__tb_Trips__Route__2B3F6F97" FromRole="tb_Trips" ToRole="tb_Route" />
+        </EntityType>
+        <Association Name="FK__tb_Book__UserId__4F7CD00D">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="0..1" />
+          <End Role="tb_Book" Type="AspMvcBusTicketReservationDBModel.Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tb_Book">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Book__TripId__4E88ABD4">
+          <End Role="tb_Trips" Type="AspMvcBusTicketReservationDBModel.Trip" Multiplicity="0..1" />
+          <End Role="tb_Book" Type="AspMvcBusTicketReservationDBModel.Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Trips">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tb_Book">
+              <PropertyRef Name="TripId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Trips__Bus__29572725">
+          <End Role="tb_Bus" Type="AspMvcBusTicketReservationDBModel.Bus" Multiplicity="0..1" />
+          <End Role="tb_Trips" Type="AspMvcBusTicketReservationDBModel.Trip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Bus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tb_Trips">
+              <PropertyRef Name="Bus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Trips__Driver__2A4B4B5E">
+          <End Role="tb_Driver" Type="AspMvcBusTicketReservationDBModel.Driver" Multiplicity="0..1" />
+          <End Role="tb_Trips" Type="AspMvcBusTicketReservationDBModel.Trip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Driver">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tb_Trips">
+              <PropertyRef Name="Driver" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Trips__Route__2B3F6F97">
+          <End Role="tb_Route" Type="AspMvcBusTicketReservationDBModel.Route" Multiplicity="0..1" />
+          <End Role="tb_Trips" Type="AspMvcBusTicketReservationDBModel.Trip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Route">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tb_Trips">
+              <PropertyRef Name="Route" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="AppDb" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <EntitySet Name="Books" EntityType="AspMvcBusTicketReservationDBModel.Book" />
+          <EntitySet Name="Buses" EntityType="AspMvcBusTicketReservationDBModel.Bus" />
+          <EntitySet Name="Drivers" EntityType="AspMvcBusTicketReservationDBModel.Driver" />
+          <EntitySet Name="Routes" EntityType="AspMvcBusTicketReservationDBModel.Route" />
+          <EntitySet Name="Trips1" EntityType="AspMvcBusTicketReservationDBModel.Trip" />
+          <AssociationSet Name="FK__tb_Book__UserId__4F7CD00D" Association="Self.FK__tb_Book__UserId__4F7CD00D">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="tb_Book" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Book__TripId__4E88ABD4" Association="Self.FK__tb_Book__TripId__4E88ABD4">
+            <End Role="tb_Trips" EntitySet="Trips1" />
+            <End Role="tb_Book" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Trips__Bus__29572725" Association="Self.FK__tb_Trips__Bus__29572725">
+            <End Role="tb_Bus" EntitySet="Buses" />
+            <End Role="tb_Trips" EntitySet="Trips1" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Trips__Driver__2A4B4B5E" Association="Self.FK__tb_Trips__Driver__2A4B4B5E">
+            <End Role="tb_Driver" EntitySet="Drivers" />
+            <End Role="tb_Trips" EntitySet="Trips1" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Trips__Route__2B3F6F97" Association="Self.FK__tb_Trips__Route__2B3F6F97">
+            <End Role="tb_Route" EntitySet="Routes" />
+            <End Role="tb_Trips" EntitySet="Trips1" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AspMvcBusTicketReservationDBModelStoreContainer" CdmEntityContainer="AppDb">
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="AspMvcBusTicketReservationDBModel.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="AspMvcBusTicketReservationDBModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Books">
+            <EntityTypeMapping TypeName="AspMvcBusTicketReservationDBModel.Book">
+              <MappingFragment StoreEntitySet="tb_Book">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Fare" ColumnName="Fare" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="TripId" ColumnName="TripId" />
+                <ScalarProperty Name="seatList" ColumnName="seatList" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="payment" ColumnName="payment" />
+                <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Buses">
+            <EntityTypeMapping TypeName="AspMvcBusTicketReservationDBModel.Bus">
+              <MappingFragment StoreEntitySet="tb_Bus">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Drivers">
+            <EntityTypeMapping TypeName="AspMvcBusTicketReservationDBModel.Driver">
+              <MappingFragment StoreEntitySet="tb_Driver">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DriverSerial" ColumnName="DriverSerial" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Routes">
+            <EntityTypeMapping TypeName="AspMvcBusTicketReservationDBModel.Route">
+              <MappingFragment StoreEntitySet="tb_Route">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Fare" ColumnName="Fare" />
+                <ScalarProperty Name="Distance" ColumnName="Distance" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trips1">
+            <EntityTypeMapping TypeName="AspMvcBusTicketReservationDBModel.Trip">
+              <MappingFragment StoreEntitySet="tb_Trips">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Route" ColumnName="Route" />
+                <ScalarProperty Name="Bus" ColumnName="Bus" />
+                <ScalarProperty Name="Driver" ColumnName="Driver" />
+                <ScalarProperty Name="A1" ColumnName="A1" />
+                <ScalarProperty Name="A2" ColumnName="A2" />
+                <ScalarProperty Name="A3" ColumnName="A3" />
+                <ScalarProperty Name="A4" ColumnName="A4" />
+                <ScalarProperty Name="B1" ColumnName="B1" />
+                <ScalarProperty Name="B2" ColumnName="B2" />
+                <ScalarProperty Name="B3" ColumnName="B3" />
+                <ScalarProperty Name="B4" ColumnName="B4" />
+                <ScalarProperty Name="C1" ColumnName="C1" />
+                <ScalarProperty Name="C2" ColumnName="C2" />
+                <ScalarProperty Name="C3" ColumnName="C3" />
+                <ScalarProperty Name="C4" ColumnName="C4" />
+                <ScalarProperty Name="D1" ColumnName="D1" />
+                <ScalarProperty Name="D2" ColumnName="D2" />
+                <ScalarProperty Name="D3" ColumnName="D3" />
+                <ScalarProperty Name="D4" ColumnName="D4" />
+                <ScalarProperty Name="E1" ColumnName="E1" />
+                <ScalarProperty Name="E2" ColumnName="E2" />
+                <ScalarProperty Name="E3" ColumnName="E3" />
+                <ScalarProperty Name="E4" ColumnName="E4" />
+                <ScalarProperty Name="F1" ColumnName="F1" />
+                <ScalarProperty Name="F2" ColumnName="F2" />
+                <ScalarProperty Name="F3" ColumnName="F3" />
+                <ScalarProperty Name="F4" ColumnName="F4" />
+                <ScalarProperty Name="G1" ColumnName="G1" />
+                <ScalarProperty Name="G2" ColumnName="G2" />
+                <ScalarProperty Name="G3" ColumnName="G3" />
+                <ScalarProperty Name="G4" ColumnName="G4" />
+                <ScalarProperty Name="H1" ColumnName="H1" />
+                <ScalarProperty Name="H2" ColumnName="H2" />
+                <ScalarProperty Name="H3" ColumnName="H3" />
+                <ScalarProperty Name="H4" ColumnName="H4" />
+                <ScalarProperty Name="I1" ColumnName="I1" />
+                <ScalarProperty Name="I2" ColumnName="I2" />
+                <ScalarProperty Name="I3" ColumnName="I3" />
+                <ScalarProperty Name="I4" ColumnName="I4" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="AspMvcBusTicketReservationDBModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

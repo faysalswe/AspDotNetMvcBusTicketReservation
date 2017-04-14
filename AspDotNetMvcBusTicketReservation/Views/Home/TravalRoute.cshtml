@@ -1,0 +1,103 @@
+﻿@model AspDotNetMvcBusTicketReservation.Models.Trip
+        @{
+            ViewBag.Title = "Select Bus Schedule";
+        }
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Route, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("Routes", null, "Select Route", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("Dates", new SelectList(string.Empty, "Value", "Text"), "Please select a Date", new { @class = "form-control" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Time, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("Times", new SelectList(string.Empty, "Value", "Text"), "Please select a Time", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10"> 
+                        <input type="submit" value="Select Seat" class="btn btn-success" />
+                    </div>
+                    @ViewBag.msgslectseat;
+                </div>
+                <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+                <script>
+
+                    $(document).ready(function () {
+                        $('#Routes').change(function () {
+                            $("#Dates").empty();
+                            $("#Times").empty();
+                            $.ajax({
+                                type: 'POST',
+                                url: '@Url.Action("TravalDate", "Home")',
+                                dataType: 'json',
+                                data: { id: $('#Routes').val() },
+                                success: function (d) {
+                                    $('#Dates').append('<option value="">' +"Select Date"+'</option>');
+                                    $.each(d, function (i, item) {
+                                        $('#Dates').append('<option value="' + item.Text + '">' +
+                                             item.Value + '</option>');
+                                    });
+                                },
+                                error: function (ex) {
+                                    alert('Failed to retrieve states.' + ex);
+                                }
+                            });
+                            return false;
+                        });
+                    });
+                </script>
+                <script>
+
+                    $(document).ready(function () {
+                        $('#Dates').change(function () {
+                            $("#Times").empty();
+                            $.ajax({
+                                type: 'POST',
+                                url: '@Url.Action("TravalTime", "Home")',
+                                dataType: 'json',
+                                data: {
+                                        id: $('#Dates').val(),
+                                        route: $('#Routes').val()
+                                        },
+                                success: function (d) {
+                                    if (d != null) {
+                                        $('#Times').append('<option value="">' + "Select Time" + '</option>');
+                                    }
+                                    else {
+                                        $('#Times').append('<option value="">' + "No Schedule found" + '</option>');
+                                    }
+                                    $.each(d, function (i, item) {
+                                        $('#Times').append('<option value="' + item.Text + '">' +
+                                             item.Value + '</option>');
+                                    });
+                                },
+                                error: function (ex) {
+                                    alert('Failed to retrieve states.' + ex);
+                                }
+                            });
+                            return false;
+                        });
+                    });
+                </script>
+            </div>
+        }
+

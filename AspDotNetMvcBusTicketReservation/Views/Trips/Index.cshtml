@@ -1,0 +1,58 @@
+﻿@model IEnumerable<AspDotNetMvcBusTicketReservation.Models.Trip>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<p>
+    @Html.ActionLink("Create New", "Create",null, new { @Class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Time)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.tb_Bus.SerialNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tb_Driver.DriverSerial)
+        </th>
+        <th>
+            @Html.DisplayName("Route")
+        </th>
+        <th>
+            Update/Delete
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Time)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tb_Bus.SerialNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tb_Driver.DriverSerial)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tb_Route.Title)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id },new { @Class="btn btn-primary" }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id }, new { @Class = "btn btn-primary" })
+        </td>
+    </tr>
+}
+
+</table>

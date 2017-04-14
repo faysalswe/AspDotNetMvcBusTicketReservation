@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AspMvcBusTicketReservationDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_Book">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fare" Type="money" />
+    <Property Name="Date" Type="date" />
+    <Property Name="TripId" Type="int" />
+    <Property Name="seatList" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" />
+    <Property Name="payment" Type="nvarchar" MaxLength="50" />
+    <Property Name="TransactionId" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tb_Bus">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SerialNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Brand" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Model" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tb_Driver">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DriverSerial" Type="nvarchar" MaxLength="50" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Mobile" Type="nvarchar" MaxLength="15" />
+    <Property Name="Address" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="tb_Route">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" />
+    <Property Name="Fare" Type="decimal" Precision="6" Scale="2" />
+    <Property Name="Distance" Type="int" />
+  </EntityType>
+  <EntityType Name="tb_Trips">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="date" />
+    <Property Name="Time" Type="time" Precision="7" />
+    <Property Name="Route" Type="int" />
+    <Property Name="Bus" Type="int" />
+    <Property Name="Driver" Type="int" />
+    <Property Name="A1" Type="nvarchar" MaxLength="128" />
+    <Property Name="A2" Type="nvarchar" MaxLength="128" />
+    <Property Name="A3" Type="nvarchar" MaxLength="128" />
+    <Property Name="A4" Type="nvarchar" MaxLength="128" />
+    <Property Name="B1" Type="nvarchar" MaxLength="128" />
+    <Property Name="B2" Type="nvarchar" MaxLength="128" />
+    <Property Name="B3" Type="nvarchar" MaxLength="128" />
+    <Property Name="B4" Type="nvarchar" MaxLength="128" />
+    <Property Name="C1" Type="nvarchar" MaxLength="128" />
+    <Property Name="C2" Type="nvarchar" MaxLength="128" />
+    <Property Name="C3" Type="nvarchar" MaxLength="128" />
+    <Property Name="C4" Type="nvarchar" MaxLength="128" />
+    <Property Name="D1" Type="nvarchar" MaxLength="128" />
+    <Property Name="D2" Type="nvarchar" MaxLength="128" />
+    <Property Name="D3" Type="nvarchar" MaxLength="128" />
+    <Property Name="D4" Type="nvarchar" MaxLength="128" />
+    <Property Name="E1" Type="nvarchar" MaxLength="128" />
+    <Property Name="E2" Type="nvarchar" MaxLength="128" />
+    <Property Name="E3" Type="nvarchar" MaxLength="128" />
+    <Property Name="E4" Type="nvarchar" MaxLength="128" />
+    <Property Name="F1" Type="nvarchar" MaxLength="128" />
+    <Property Name="F2" Type="nvarchar" MaxLength="128" />
+    <Property Name="F3" Type="nvarchar" MaxLength="128" />
+    <Property Name="F4" Type="nvarchar" MaxLength="128" />
+    <Property Name="G1" Type="nvarchar" MaxLength="128" />
+    <Property Name="G2" Type="nvarchar" MaxLength="128" />
+    <Property Name="G3" Type="nvarchar" MaxLength="128" />
+    <Property Name="G4" Type="nvarchar" MaxLength="128" />
+    <Property Name="H1" Type="nvarchar" MaxLength="128" />
+    <Property Name="H2" Type="nvarchar" MaxLength="128" />
+    <Property Name="H3" Type="nvarchar" MaxLength="128" />
+    <Property Name="H4" Type="nvarchar" MaxLength="128" />
+    <Property Name="I1" Type="nvarchar" MaxLength="128" />
+    <Property Name="I2" Type="nvarchar" MaxLength="128" />
+    <Property Name="I3" Type="nvarchar" MaxLength="128" />
+    <Property Name="I4" Type="nvarchar" MaxLength="128" />
+  </EntityType>
+  <Association Name="FK__tb_Book__TripId__4E88ABD4">
+    <End Role="tb_Trips" Type="Self.tb_Trips" Multiplicity="0..1" />
+    <End Role="tb_Book" Type="Self.tb_Book" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Trips">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tb_Book">
+        <PropertyRef Name="TripId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tb_Book__UserId__4F7CD00D">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="tb_Book" Type="Self.tb_Book" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tb_Book">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tb_Trips__Bus__29572725">
+    <End Role="tb_Bus" Type="Self.tb_Bus" Multiplicity="0..1" />
+    <End Role="tb_Trips" Type="Self.tb_Trips" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Bus">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tb_Trips">
+        <PropertyRef Name="Bus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tb_Trips__Driver__2A4B4B5E">
+    <End Role="tb_Driver" Type="Self.tb_Driver" Multiplicity="0..1" />
+    <End Role="tb_Trips" Type="Self.tb_Trips" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Driver">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tb_Trips">
+        <PropertyRef Name="Driver" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tb_Trips__Route__2B3F6F97">
+    <End Role="tb_Route" Type="Self.tb_Route" Multiplicity="0..1" />
+    <End Role="tb_Trips" Type="Self.tb_Trips" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Route">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tb_Trips">
+        <PropertyRef Name="Route" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AspMvcBusTicketReservationDBModelStoreContainer">
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_Book" EntityType="Self.tb_Book" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_Bus" EntityType="Self.tb_Bus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_Driver" EntityType="Self.tb_Driver" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_Route" EntityType="Self.tb_Route" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_Trips" EntityType="Self.tb_Trips" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__tb_Book__TripId__4E88ABD4" Association="Self.FK__tb_Book__TripId__4E88ABD4">
+      <End Role="tb_Trips" EntitySet="tb_Trips" />
+      <End Role="tb_Book" EntitySet="tb_Book" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tb_Book__UserId__4F7CD00D" Association="Self.FK__tb_Book__UserId__4F7CD00D">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="tb_Book" EntitySet="tb_Book" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tb_Trips__Bus__29572725" Association="Self.FK__tb_Trips__Bus__29572725">
+      <End Role="tb_Bus" EntitySet="tb_Bus" />
+      <End Role="tb_Trips" EntitySet="tb_Trips" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tb_Trips__Driver__2A4B4B5E" Association="Self.FK__tb_Trips__Driver__2A4B4B5E">
+      <End Role="tb_Driver" EntitySet="tb_Driver" />
+      <End Role="tb_Trips" EntitySet="tb_Trips" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tb_Trips__Route__2B3F6F97" Association="Self.FK__tb_Trips__Route__2B3F6F97">
+      <End Role="tb_Route" EntitySet="tb_Route" />
+      <End Role="tb_Trips" EntitySet="tb_Trips" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AspMvcBusTicketReservationDBModelStoreContainer" CdmEntityContainer="AppDb">
+    <EntitySetMapping Name="AspNetRoles">
+      <EntityTypeMapping TypeName="AspMvcBusTicketReservationDBModel.AspNetRole">
+        <MappingFragment StoreEntitySet="AspNetRoles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="AspMvcBusTicketReservationDBModel.AspNetUser">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Books">
+      <EntityTypeMapping TypeName="AspMvcBusTicketReservationDBModel.Book">
+        <MappingFragment StoreEntitySet="tb_Book">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Fare" ColumnName="Fare" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="TripId" ColumnName="TripId" />
+          <ScalarProperty Name="seatList" ColumnName="seatList" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="payment" ColumnName="payment" />
+          <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Buses">
+      <EntityTypeMapping TypeName="AspMvcBusTicketReservationDBModel.Bus">
+        <MappingFragment StoreEntitySet="tb_Bus">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+          <ScalarProperty Name="Brand" ColumnName="Brand" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Drivers">
+      <EntityTypeMapping TypeName="AspMvcBusTicketReservationDBModel.Driver">
+        <MappingFragment StoreEntitySet="tb_Driver">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DriverSerial" ColumnName="DriverSerial" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Routes">
+      <EntityTypeMapping TypeName="AspMvcBusTicketReservationDBModel.Route">
+        <MappingFragment StoreEntitySet="tb_Route">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Fare" ColumnName="Fare" />
+          <ScalarProperty Name="Distance" ColumnName="Distance" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Trips1">
+      <EntityTypeMapping TypeName="AspMvcBusTicketReservationDBModel.Trip">
+        <MappingFragment StoreEntitySet="tb_Trips">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Route" ColumnName="Route" />
+          <ScalarProperty Name="Bus" ColumnName="Bus" />
+          <ScalarProperty Name="Driver" ColumnName="Driver" />
+          <ScalarProperty Name="A1" ColumnName="A1" />
+          <ScalarProperty Name="A2" ColumnName="A2" />
+          <ScalarProperty Name="A3" ColumnName="A3" />
+          <ScalarProperty Name="A4" ColumnName="A4" />
+          <ScalarProperty Name="B1" ColumnName="B1" />
+          <ScalarProperty Name="B2" ColumnName="B2" />
+          <ScalarProperty Name="B3" ColumnName="B3" />
+          <ScalarProperty Name="B4" ColumnName="B4" />
+          <ScalarProperty Name="C1" ColumnName="C1" />
+          <ScalarProperty Name="C2" ColumnName="C2" />
+          <ScalarProperty Name="C3" ColumnName="C3" />
+          <ScalarProperty Name="C4" ColumnName="C4" />
+          <ScalarProperty Name="D1" ColumnName="D1" />
+          <ScalarProperty Name="D2" ColumnName="D2" />
+          <ScalarProperty Name="D3" ColumnName="D3" />
+          <ScalarProperty Name="D4" ColumnName="D4" />
+          <ScalarProperty Name="E1" ColumnName="E1" />
+          <ScalarProperty Name="E2" ColumnName="E2" />
+          <ScalarProperty Name="E3" ColumnName="E3" />
+          <ScalarProperty Name="E4" ColumnName="E4" />
+          <ScalarProperty Name="F1" ColumnName="F1" />
+          <ScalarProperty Name="F2" ColumnName="F2" />
+          <ScalarProperty Name="F3" ColumnName="F3" />
+          <ScalarProperty Name="F4" ColumnName="F4" />
+          <ScalarProperty Name="G1" ColumnName="G1" />
+          <ScalarProperty Name="G2" ColumnName="G2" />
+          <ScalarProperty Name="G3" ColumnName="G3" />
+          <ScalarProperty Name="G4" ColumnName="G4" />
+          <ScalarProperty Name="H1" ColumnName="H1" />
+          <ScalarProperty Name="H2" ColumnName="H2" />
+          <ScalarProperty Name="H3" ColumnName="H3" />
+          <ScalarProperty Name="H4" ColumnName="H4" />
+          <ScalarProperty Name="I1" ColumnName="I1" />
+          <ScalarProperty Name="I2" ColumnName="I2" />
+          <ScalarProperty Name="I3" ColumnName="I3" />
+          <ScalarProperty Name="I4" ColumnName="I4" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="AspNetUserRoles" TypeName="AspMvcBusTicketReservationDBModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+      <EndProperty Name="AspNetRoles">
+        <ScalarProperty Name="Id" ColumnName="RoleId" />
+      </EndProperty>
+      <EndProperty Name="AspNetUsers">
+        <ScalarProperty Name="Id" ColumnName="UserId" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

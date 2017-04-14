@@ -1,0 +1,43 @@
+﻿@model AspDotNetMvcBusTicketReservation.Models.Route
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Route</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fare)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fare)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Distance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Distance)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AspMvcBusTicketReservationDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AspNetRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tb_Book" Relationship="Self.FK__tb_Book__UserId__4F7CD00D" FromRole="AspNetUsers" ToRole="tb_Book" />
+    <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+  </EntityType>
+  <EntityType Name="Book">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fare" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <Property Name="TripId" Type="Int32" />
+    <Property Name="seatList" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="payment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TransactionId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="Self.FK__tb_Book__UserId__4F7CD00D" FromRole="tb_Book" ToRole="AspNetUsers" />
+    <NavigationProperty Name="tb_Trips" Relationship="Self.FK__tb_Book__TripId__4E88ABD4" FromRole="tb_Book" ToRole="tb_Trips" />
+  </EntityType>
+  <EntityType Name="Bus">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SerialNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Brand" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tb_Trips" Relationship="Self.FK__tb_Trips__Bus__29572725" FromRole="tb_Bus" ToRole="tb_Trips" />
+  </EntityType>
+  <EntityType Name="Driver">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DriverSerial" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tb_Trips" Relationship="Self.FK__tb_Trips__Driver__2A4B4B5E" FromRole="tb_Driver" ToRole="tb_Trips" />
+  </EntityType>
+  <EntityType Name="Route">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Fare" Type="Decimal" Precision="6" Scale="2" />
+    <Property Name="Distance" Type="Int32" />
+    <NavigationProperty Name="tb_Trips" Relationship="Self.FK__tb_Trips__Route__2B3F6F97" FromRole="tb_Route" ToRole="tb_Trips" />
+  </EntityType>
+  <EntityType Name="Trip">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <Property Name="Time" Type="Time" Precision="7" />
+    <Property Name="Route" Type="Int32" />
+    <Property Name="Bus" Type="Int32" />
+    <Property Name="Driver" Type="Int32" />
+    <Property Name="A1" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="A2" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="A3" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="A4" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="B1" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="B2" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="B3" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="B4" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="C1" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="C2" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="C3" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="C4" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="D1" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="D2" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="D3" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="D4" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="E1" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="E2" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="E3" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="E4" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="F1" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="F2" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="F3" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="F4" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="G1" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="G2" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="G3" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="G4" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="H1" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="H2" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="H3" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="H4" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="I1" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="I2" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="I3" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="I4" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tb_Book" Relationship="Self.FK__tb_Book__TripId__4E88ABD4" FromRole="tb_Trips" ToRole="tb_Book" />
+    <NavigationProperty Name="tb_Bus" Relationship="Self.FK__tb_Trips__Bus__29572725" FromRole="tb_Trips" ToRole="tb_Bus" />
+    <NavigationProperty Name="tb_Driver" Relationship="Self.FK__tb_Trips__Driver__2A4B4B5E" FromRole="tb_Trips" ToRole="tb_Driver" />
+    <NavigationProperty Name="tb_Route" Relationship="Self.FK__tb_Trips__Route__2B3F6F97" FromRole="tb_Trips" ToRole="tb_Route" />
+  </EntityType>
+  <Association Name="FK__tb_Book__UserId__4F7CD00D">
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="0..1" />
+    <End Role="tb_Book" Type="AspMvcBusTicketReservationDBModel.Book" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tb_Book">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tb_Book__TripId__4E88ABD4">
+    <End Role="tb_Trips" Type="AspMvcBusTicketReservationDBModel.Trip" Multiplicity="0..1" />
+    <End Role="tb_Book" Type="AspMvcBusTicketReservationDBModel.Book" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Trips">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tb_Book">
+        <PropertyRef Name="TripId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tb_Trips__Bus__29572725">
+    <End Role="tb_Bus" Type="AspMvcBusTicketReservationDBModel.Bus" Multiplicity="0..1" />
+    <End Role="tb_Trips" Type="AspMvcBusTicketReservationDBModel.Trip" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Bus">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tb_Trips">
+        <PropertyRef Name="Bus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tb_Trips__Driver__2A4B4B5E">
+    <End Role="tb_Driver" Type="AspMvcBusTicketReservationDBModel.Driver" Multiplicity="0..1" />
+    <End Role="tb_Trips" Type="AspMvcBusTicketReservationDBModel.Trip" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Driver">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tb_Trips">
+        <PropertyRef Name="Driver" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tb_Trips__Route__2B3F6F97">
+    <End Role="tb_Route" Type="AspMvcBusTicketReservationDBModel.Route" Multiplicity="0..1" />
+    <End Role="tb_Trips" Type="AspMvcBusTicketReservationDBModel.Trip" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Route">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tb_Trips">
+        <PropertyRef Name="Route" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AspNetUserRoles">
+    <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="AppDb" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+    <EntitySet Name="Books" EntityType="AspMvcBusTicketReservationDBModel.Book" />
+    <EntitySet Name="Buses" EntityType="AspMvcBusTicketReservationDBModel.Bus" />
+    <EntitySet Name="Drivers" EntityType="AspMvcBusTicketReservationDBModel.Driver" />
+    <EntitySet Name="Routes" EntityType="AspMvcBusTicketReservationDBModel.Route" />
+    <EntitySet Name="Trips1" EntityType="AspMvcBusTicketReservationDBModel.Trip" />
+    <AssociationSet Name="FK__tb_Book__UserId__4F7CD00D" Association="Self.FK__tb_Book__UserId__4F7CD00D">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="tb_Book" EntitySet="Books" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tb_Book__TripId__4E88ABD4" Association="Self.FK__tb_Book__TripId__4E88ABD4">
+      <End Role="tb_Trips" EntitySet="Trips1" />
+      <End Role="tb_Book" EntitySet="Books" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tb_Trips__Bus__29572725" Association="Self.FK__tb_Trips__Bus__29572725">
+      <End Role="tb_Bus" EntitySet="Buses" />
+      <End Role="tb_Trips" EntitySet="Trips1" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tb_Trips__Driver__2A4B4B5E" Association="Self.FK__tb_Trips__Driver__2A4B4B5E">
+      <End Role="tb_Driver" EntitySet="Drivers" />
+      <End Role="tb_Trips" EntitySet="Trips1" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tb_Trips__Route__2B3F6F97" Association="Self.FK__tb_Trips__Route__2B3F6F97">
+      <End Role="tb_Route" EntitySet="Routes" />
+      <End Role="tb_Trips" EntitySet="Trips1" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
