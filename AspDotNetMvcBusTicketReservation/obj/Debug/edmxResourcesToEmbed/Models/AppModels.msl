@@ -128,5 +128,38 @@
         <ScalarProperty Name="Id" ColumnName="UserId" />
       </EndProperty>
     </AssociationSetMapping>
+    <FunctionImportMapping FunctionImportName="SpGetBookingListByDate" FunctionName="AspMvcBusTicketReservationDBModel.Store.SpGetBookingListByDate">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AspMvcBusTicketReservationDBModel.BookingListByDate">
+          <ScalarProperty Name="RouteName" ColumnName="RouteName" />
+          <ScalarProperty Name="TravelDate" ColumnName="TravelDate" />
+          <ScalarProperty Name="TravelTime" ColumnName="TravelTime" />
+          <ScalarProperty Name="seatList" ColumnName="seatList" />
+          <ScalarProperty Name="Fare" ColumnName="Fare" />
+          <ScalarProperty Name="BookingId" ColumnName="BookingId" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="payment" ColumnName="payment" />
+          <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+          <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SpGetBookingListByUserId" FunctionName="AspMvcBusTicketReservationDBModel.Store.SpGetBookingListByUserId">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AspMvcBusTicketReservationDBModel.BookingListByUserId">
+          <ScalarProperty Name="RouteName" ColumnName="RouteName" />
+          <ScalarProperty Name="TravelDate" ColumnName="TravelDate" />
+          <ScalarProperty Name="TravelTime" ColumnName="TravelTime" />
+          <ScalarProperty Name="seatList" ColumnName="seatList" />
+          <ScalarProperty Name="Fare" ColumnName="Fare" />
+          <ScalarProperty Name="BookingId" ColumnName="BookingId" />
+          <ScalarProperty Name="payment" ColumnName="payment" />
+          <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+          <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UpdateTripSeat" FunctionName="AspMvcBusTicketReservationDBModel.Store.SpUpdateTripSeatStatus" />
   </EntityContainerMapping>
 </Mapping>

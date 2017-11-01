@@ -1,12 +1,22 @@
 
 body {
-    background-image: url('../SiteIcon/background1.jpg');
-    background-size: 100%;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    background: url('../siteicon/background1.jpg') no-repeat top;
+    background-size: cover;
+    background-attachment:fixed;
 }
 
+#body .dark-overlay {
+    background-color: rgba(44, 62, 80, 0.8);
+    min-height: -webkit-fill-available;
+}
 
-.list{
-    color:darkblue;
+.padding-top{
+    padding-top:76px;
+}
+
+.list {
+    color: darkblue;
 }

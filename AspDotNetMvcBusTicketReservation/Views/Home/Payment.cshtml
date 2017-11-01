@@ -4,30 +4,97 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
 
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-       
-        <div class="form-group">
-            @Html.LabelFor(model => model.payment, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                
-                @Html.DropDownListFor(model => model.payment, new List<SelectListItem>
+@Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        @* @Html.LabelFor(model => model.payment, htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <div class="col-md-10">
+
+            @*@Html.DropDownListFor(model => model.payment, new List<SelectListItem>
                         {
                         new SelectListItem() {Text = "Bkash", Value="bkash"},
                         new SelectListItem() {Text = "DBBL MOBILE", Value="dbblmob"},
                         new SelectListItem() {Text = "DBBL Card", Value="dbbl"},
                         new SelectListItem() {Text = "Mkash", Value="mkash"}
                         }, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.payment, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                @Html.ValidationMessageFor(model => model.payment, "", new { @class = "text-danger" })*@
+            <div class="row">
+                <div class="col-md-2">
+                   
+                </div>
+                <div class="col-md-10">
+                    @using (Html.BeginForm())
+                    {
+                        <div class="list-group">
+                            <a href="#" class="list-group-item info">
+                                <h4 class="list-group-item-heading">DBBL</h4>
+                                <p class="list-group-item-text">
+                                    DBBL Payment Support.
+                                    @Html.HiddenFor(model => model.payment, new { Value = "DBBL" })
+                                    @Html.HiddenFor(model => model.TransactionId, new { Value = "D1234567" })
+                                    <input type="submit" value="Click here" class="btn btn-success" />
+                                </p>
+                            </a>
+                        </div>
+                    }
+                    @using (Html.BeginForm())
+                    {
+                        <div class="list-group">
+                            <a href="#" class="list-group-item info">
 
-        <div class="form-group">
+                                <h4 class="list-group-item-heading">BKASH</h4>
+                                <p class="list-group-item-text">
+                                    BKASH Payment Support.
+                                    @Html.HiddenFor(model => model.payment, new { Value = "BKASH" })
+                                    @Html.HiddenFor(model => model.TransactionId, new { Value = "b123456" })
+
+
+                                    <input type="submit" value="Click here" class="btn btn-success" />
+                                </p>
+                            </a>
+                        </div>
+                    }
+                    @using (Html.BeginForm())
+                    {
+                        <div class="list-group">
+                            <a href="#" class="list-group-item info">
+                                <h4 class="list-group-item-heading">VISA</h4>
+                                <p class="list-group-item-text">
+                                    VISA Payment Support.
+                                    @Html.HiddenFor(model => model.payment, new { Value = "VISA" })
+                                    @Html.HiddenFor(model => model.TransactionId, new { Value = "v123456" })
+                                    <input type="submit" value="Click here" class="btn btn-success" />
+                                </p>
+                            </a>
+                        </div>
+                    }
+                    @using (Html.BeginForm())
+                    {
+                        <div class="list-group">
+                            <a href="#" class="list-group-item info">
+                                <h4 class="list-group-item-heading">MASTER CARD</h4>
+                                <p class="list-group-item-text">
+                                    MASTER CARD Payment Support.
+                                    @Html.HiddenFor(model => model.payment, new { Value = "MASTER CARD" })
+                                    @Html.HiddenFor(model => model.TransactionId, new { Value = "mc12345" })
+
+                                    <input type="submit" value="Click here" class="btn btn-default" />
+                                </p>
+                            </a>
+                        </div>
+                    }
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    @*<div class="form-group">
             @Html.LabelFor(model => model.TransactionId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.TransactionId, new { htmlAttributes = new { @class = "form-control" } })
@@ -39,8 +106,5 @@
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Payment" class="btn btn-default" />
             </div>
-        </div>
-    </div>
-}
-
-
+        </div>*@
+</div>

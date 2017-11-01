@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'c:\users\faysal\documents\visual studio 2015\Projects\AspDotNetMvcBusTicketReservation\AspDotNetMvcBusTicketReservation\Models\AppModels.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Faysal\Desktop\Projects\AspDotNetMvcBusTicketReservation\AspDotNetMvcBusTicketReservation\Models\AppModels.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

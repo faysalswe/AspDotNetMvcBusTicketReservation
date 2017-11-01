@@ -7,47 +7,30 @@
 
 <h3 style="color:forestgreen">PaymentSuccessful</h3>
 
-<div>
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Fare)
-        </dt>
+    <table class="table">
+        <tr>
+            <td> @Html.DisplayNameFor(model => model.Fare)</td>
+            <td> @Html.DisplayFor(model => model.Fare)</td>
+        </tr>
+        <tr>
+            <td> @Html.DisplayNameFor(model => model.Date)</td>
+            <td> @Html.DisplayFor(model => model.Date)</td>
+        </tr>
+        <tr>
+            <td> @Html.DisplayNameFor(model => model.seatList) </td>
+            <td> @Html.DisplayFor(model => model.seatList)</td>
+        </tr>
+        <tr>
+            <td> @Html.DisplayNameFor(model => model.payment)</td>
+            <td> @Html.DisplayFor(model => model.payment)</td>
+        </tr>
+        <tr>
+            <td> @Html.DisplayNameFor(model => model.TransactionId)</td>
+            <td> @Html.DisplayFor(model => model.TransactionId)</td>
+        </tr>
+    </table>
 
-        <dd>
-            @Html.DisplayFor(model => model.Fare)
-        </dd>
+    <div>
+    <a class="btn btn-success" href="@Url.Action("GetReport")"> Download Ticket </a>
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Date)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.seatList)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.seatList)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.payment)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.payment)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TransactionId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TransactionId)
-        </dd>
-
-    </dl>
-</div>

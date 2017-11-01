@@ -12,6 +12,8 @@ namespace AspDotNetMvcBusTicketReservation.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class AppDb : DbContext
     {
@@ -32,5 +34,52 @@ namespace AspDotNetMvcBusTicketReservation.Models
         public virtual DbSet<Driver> Drivers { get; set; }
         public virtual DbSet<Route> Routes { get; set; }
         public virtual DbSet<Trip> Trips1 { get; set; }
+    
+        public virtual ObjectResult<BookingListByDate> SpGetBookingListByDate(Nullable<System.DateTime> date)
+        {
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("Date", date) :
+                new ObjectParameter("Date", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BookingListByDate>("SpGetBookingListByDate", dateParameter);
+        }
+    
+        public virtual ObjectResult<BookingListByUserId> SpGetBookingListByUserId(string name)
+        {
+            var nameParameter = name != null ?
+                new ObjectParameter("name", name) :
+                new ObjectParameter("name", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BookingListByUserId>("SpGetBookingListByUserId", nameParameter);
+        }
+    
+        public virtual int UpdateTripSeat(string bookid, string tripid, string seat1, string seat2, string seat3, string seat4)
+        {
+            var bookidParameter = bookid != null ?
+                new ObjectParameter("bookid", bookid) :
+                new ObjectParameter("bookid", typeof(string));
+    
+            var tripidParameter = tripid != null ?
+                new ObjectParameter("tripid", tripid) :
+                new ObjectParameter("tripid", typeof(string));
+    
+            var seat1Parameter = seat1 != null ?
+                new ObjectParameter("Seat1", seat1) :
+                new ObjectParameter("Seat1", typeof(string));
+    
+            var seat2Parameter = seat2 != null ?
+                new ObjectParameter("Seat2", seat2) :
+                new ObjectParameter("Seat2", typeof(string));
+    
+            var seat3Parameter = seat3 != null ?
+                new ObjectParameter("Seat3", seat3) :
+                new ObjectParameter("Seat3", typeof(string));
+    
+            var seat4Parameter = seat4 != null ?
+                new ObjectParameter("Seat4", seat4) :
+                new ObjectParameter("Seat4", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateTripSeat", bookidParameter, tripidParameter, seat1Parameter, seat2Parameter, seat3Parameter, seat4Parameter);
+        }
     }
 }

@@ -220,5 +220,43 @@
       <End Role="AspNetRoles" EntitySet="AspNetRoles" />
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
     </AssociationSet>
+    <FunctionImport Name="SpGetBookingListByDate" ReturnType="Collection(AspMvcBusTicketReservationDBModel.BookingListByDate)">
+      <Parameter Name="Date" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="SpGetBookingListByUserId" ReturnType="Collection(AspMvcBusTicketReservationDBModel.BookingListByUserId)">
+      <Parameter Name="name" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateTripSeat">
+      <Parameter Name="bookid" Mode="In" Type="String" />
+      <Parameter Name="tripid" Mode="In" Type="String" />
+      <Parameter Name="Seat1" Mode="In" Type="String" />
+      <Parameter Name="Seat2" Mode="In" Type="String" />
+      <Parameter Name="Seat3" Mode="In" Type="String" />
+      <Parameter Name="Seat4" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
+  <ComplexType Name="BookingListByDate">
+    <Property Type="String" Name="RouteName" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="TravelDate" Nullable="true" />
+    <Property Type="String" Name="TravelTime" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="seatList" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="Fare" Nullable="true" Precision="19" />
+    <Property Type="Int32" Name="BookingId" Nullable="false" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="PhoneNumber" Nullable="true" />
+    <Property Type="String" Name="payment" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TransactionId" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="PurchaseDate" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="BookingListByUserId">
+    <Property Type="String" Name="RouteName" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="TravelDate" Nullable="true" />
+    <Property Type="String" Name="TravelTime" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="seatList" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="Fare" Nullable="true" Precision="19" />
+    <Property Type="Int32" Name="BookingId" Nullable="false" />
+    <Property Type="String" Name="payment" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TransactionId" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="PurchaseDate" Nullable="true" />
+  </ComplexType>
 </Schema>

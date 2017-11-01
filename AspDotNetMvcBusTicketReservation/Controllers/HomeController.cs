@@ -7,12 +7,17 @@ using AspDotNetMvcBusTicketReservation.Models;
 using System.Globalization;
 using Microsoft.AspNet.Identity;
 using System.Data.Entity;
+using Microsoft.Reporting.WebForms;
 
 namespace AspDotNetMvcBusTicketReservation.Controllers
 {
     public class HomeController : Controller
     {
         protected AppDb db = new AppDb();
+        public ActionResult Index()
+        {
+            return RedirectToAction("TravalRoute");
+        }
 
         [HttpGet]
         public ActionResult TravalRoute()
@@ -20,10 +25,10 @@ namespace AspDotNetMvcBusTicketReservation.Controllers
             ViewBag.Routes = new SelectList(db.Routes.ToList(), "Id", "Title");
             return View();
         }
-        public IEnumerable<DateTime?>  GetTravalDate(int id)
+        public IEnumerable<DateTime?> GetTravalDate(int id)
         {
             DateTime date = Convert.ToDateTime(DateTime.Now.ToString("9-05-2017", CultureInfo.InvariantCulture));
-           
+
             var dates = db.Trips1.Where(m => m.Route == id && m.Date >= date).Select(x => x.Date).Distinct().ToList();
             return dates.ToList();
         }
@@ -34,7 +39,7 @@ namespace AspDotNetMvcBusTicketReservation.Controllers
             var statesList = stateListt.Select(m => new SelectListItem()
             {
                 Text = m.Value.ToString(),
-                Value = Convert.ToDateTime(m.Value).ToString("dd-MM-yyyy", CultureInfo.InvariantCulture )
+                Value = Convert.ToDateTime(m.Value).ToString("dd-MM-yyyy", CultureInfo.InvariantCulture)
             });
 
             return Json(statesList, JsonRequestBehavior.AllowGet);
@@ -46,7 +51,7 @@ namespace AspDotNetMvcBusTicketReservation.Controllers
 
         public JsonResult TravalTime(string id, string route)
         {
-            var stateListt = this.GetTravalTime(Convert.ToDateTime(id),Convert.ToInt16(route));
+            var stateListt = this.GetTravalTime(Convert.ToDateTime(id), Convert.ToInt16(route));
             var statesList = stateListt.Select(m => new SelectListItem()
             {
                 Text = m.Time.ToString(),
@@ -55,7 +60,7 @@ namespace AspDotNetMvcBusTicketReservation.Controllers
             return Json(statesList, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult TravalRoute(string Routes,string Dates,string Times)
+        public ActionResult TravalRoute(string Routes, string Dates, string Times)
         {
             if (Routes != null && Dates != null && Times != null)
             {
@@ -77,12 +82,13 @@ namespace AspDotNetMvcBusTicketReservation.Controllers
         [HttpGet]
         public ActionResult SelectSeat()
         {
-            
+
             try
             {
                 TempData["Fare"] = double.Parse(Session["Fare"].ToString());
                 int tripid = Convert.ToInt32(TempData["tripId"].ToString());
                 TempData["tripId"] = tripid;
+                Response.Cookies["tripid"].Value = tripid.ToString();
                 Trip seat = db.Trips1.Find(tripid);
                 return View(seat);
             }
@@ -91,7 +97,7 @@ namespace AspDotNetMvcBusTicketReservation.Controllers
                 return RedirectToAction("TravalRoute");
             }
 
-            
+
         }
 
 
@@ -99,7 +105,8 @@ namespace AspDotNetMvcBusTicketReservation.Controllers
         [HttpPost]
         public ActionResult SelectSeat(string seatlist)
         {
-            
+            Response.Cookies["seatlist"].Value = seatlist;
+
             string[] inputs = seatlist.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
 
             int i = 0;
@@ -107,13 +114,13 @@ namespace AspDotNetMvcBusTicketReservation.Controllers
             {
                 i++;
             }
-                   
+
             if (seatlist != null)
             {
                 Book aBooking = new Book();
                 aBooking.seatList = seatlist;
                 aBooking.TripId = Convert.ToInt32(TempData["tripId"].ToString());
-                aBooking.Fare = (i/3)* Convert.ToDecimal(TempData["Fare"].ToString());
+                aBooking.Fare = (i / 3) * Convert.ToDecimal(TempData["Fare"].ToString());
                 aBooking.Date = DateTime.Now;
                 aBooking.UserId = User.Identity.GetUserId();
                 db.Books.Add(aBooking);
@@ -143,7 +150,8 @@ namespace AspDotNetMvcBusTicketReservation.Controllers
             }
         }
 
-        private void UpdateBook(int id,string payment, string transactionId)
+        [Authorize]
+        private void UpdateBook(int id, string payment, string transactionId)
         {
             using (AppDb db = new AppDb())
             {
@@ -160,10 +168,123 @@ namespace AspDotNetMvcBusTicketReservation.Controllers
         [HttpPost]
         public ActionResult Payment(string payment, string transactionId)
         {
-            int id = int.Parse(TempData["bookId"].ToString());
-            UpdateBook(id, payment, transactionId);
-            Book bookmodel = db.Books.Find(id);
-            return View("PaymentSuccessful",bookmodel);
+            try
+            {
+                int id = int.Parse(TempData["bookId"].ToString());
+                UpdateBook(id, payment, transactionId);
+
+                if (Request.Cookies["seatlist"] != null)
+                {
+                    string seatlist = Request.Cookies["seatlist"].Value.ToString();
+                    string[] inputs = new string[4];
+
+                    inputs[0] = null;
+                    inputs[1] = null;
+                    inputs[2] = null;
+                    inputs[3] = null;
+
+                    string[] seatname = seatlist.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                    for (int i = 0; i < seatname.Length; i++)
+                    {
+                        inputs[i] = seatname[i];
+                    }
+                    db.UpdateTripSeat(id.ToString(), Request.Cookies["tripid"].Value.ToString(), inputs[0], inputs[1], inputs[2], inputs[3]);
+                }
+                else
+                {
+                    return RedirectToAction("TravalRoute");
+                }
+                Book bookmodel = db.Books.Find(id);
+                TempData["bookId"] = Convert.ToInt32(TempData["bookId"].ToString());
+                return View("PaymentSuccessful", bookmodel);
+            }
+            catch (Exception)
+            {
+
+                return RedirectToAction("Index");
+            }
+            
+        }
+
+        [Authorize]
+        [HttpGet]
+        public ActionResult BookingHistory()
+        {
+            return View(db.SpGetBookingListByUserId(User.Identity.GetUserId()));
+        }
+
+        [Authorize]
+        public FileResult GetReport()
+        {
+            LocalReport lr = new LocalReport();
+            lr.ReportPath = Server.MapPath("~/Report/Report.rdlc");
+           
+            List<Book> cm = new List<Book>();
+            using (AppDb dc = new AppDb())
+            {
+                int id = int.Parse(TempData["bookId"].ToString());
+                cm = dc.Books.Where(x => x.Id == id).ToList();
+            }
+            ReportDataSource rd = new ReportDataSource("BookDataSet", cm);
+            lr.DataSources.Add(rd);
+
+            string reportType = "PDF";
+            string mimeType;
+            string encoding;
+            string fileNameExtension;
+            string deviceInfo = "";
+
+            Warning[] warnings;
+            string[] streams;
+            byte[] renderedBytes;
+
+            renderedBytes = lr.Render(
+                reportType,
+                deviceInfo,
+                out mimeType,
+                out encoding,
+                out fileNameExtension,
+                out streams,
+                out warnings);
+
+            return File(renderedBytes, mimeType);
+        }
+
+
+        public FileResult GetReportById(int bookingid)
+        {
+            LocalReport lr = new LocalReport();
+            lr.ReportPath = Server.MapPath("~/Report/Report.rdlc");
+
+            List<Book> cm = new List<Book>();
+            using (AppDb dc = new AppDb())
+            {
+                
+                cm = dc.Books.Where(x => x.Id == bookingid).ToList();
+            }
+            ReportDataSource rd = new ReportDataSource("BookDataSet", cm);
+            lr.DataSources.Add(rd);
+
+            string reportType = "PDF";
+            string mimeType;
+            string encoding;
+            string fileNameExtension;
+            string deviceInfo = "";
+
+            Warning[] warnings;
+            string[] streams;
+            byte[] renderedBytes;
+
+            renderedBytes = lr.Render(
+                reportType,
+                deviceInfo,
+                out mimeType,
+                out encoding,
+                out fileNameExtension,
+                out streams,
+                out warnings);
+
+            return File(renderedBytes, mimeType);
         }
     }
 }

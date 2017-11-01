@@ -4,10 +4,18 @@
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
     @Html.AntiForgeryToken()
-
-            
-            <a class="btn btn-danger" href="javascript:document.getElementById('logoutForm').submit()">Log off <span class="badge">@User.Identity.GetUserName()</span></a>
-            @Html.ActionLink("Profile", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "navbar-right btn btn-success" })
+        
+        @Html.ActionLink("Booking History", "BookingHistory", "Home", routeValues: null, htmlAttributes: new { title = "Manage", @class = "btn btn-success" })
+    <div class="navbar-right btn-group">
+        <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="badge">@User.Identity.GetUserName()</span> <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li><a class="" href="javascript:document.getElementById('logoutForm').submit()">Log off </a></li>
+            <li>@Html.ActionLink("Change Password", "ChangePassword", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "" })</li>
+        </ul>
+    </div>
+ 
     }
 }
 else

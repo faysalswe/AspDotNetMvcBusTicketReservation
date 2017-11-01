@@ -1,0 +1,76 @@
+﻿@model IEnumerable<AspDotNetMvcBusTicketReservation.Models.BookingListByUserId>
+@{
+    ViewBag.Title = "Booking History";
+}
+<div style="font-family:Arial">
+    <table class="table-striped" style="width:100%">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RouteName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TravelDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TravelTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.seatList)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fare)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookingId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.payment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TransactionId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PurchaseDate)
+            </th>
+            <th>
+               Ticket
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RouteName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TravelDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TravelTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.seatList)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fare)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookingId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.payment)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TransactionId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PurchaseDate)
+                </td>
+                <td>
+                    <a class="btn btn-block  btn-success" href="@Url.Action("GetReportById",new {bookingid = item.BookingId})"> Download </a>
+                </td>
+            </tr>
+        }
+    </table>
+</div>

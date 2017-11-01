@@ -208,6 +208,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="SpGetBookingListByDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Date" Type="date" Mode="In" />
+  </Function>
+  <Function Name="SpGetBookingListByUserId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SpUpdateTripSeatStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bookid" Type="varchar" Mode="In" />
+    <Parameter Name="tripid" Type="varchar" Mode="In" />
+    <Parameter Name="Seat1" Type="varchar" Mode="In" />
+    <Parameter Name="Seat2" Type="varchar" Mode="In" />
+    <Parameter Name="Seat3" Type="varchar" Mode="In" />
+    <Parameter Name="Seat4" Type="varchar" Mode="In" />
+  </Function>
   <EntityContainer Name="AspMvcBusTicketReservationDBModelStoreContainer">
     <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />

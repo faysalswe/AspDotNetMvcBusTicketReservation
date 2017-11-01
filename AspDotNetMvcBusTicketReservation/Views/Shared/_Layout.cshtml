@@ -10,69 +10,72 @@
 
 </head>
 <body>
-    <!------Heading-------->
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="navbar-header">
-                    <img src="~/SiteIcon/buslogo.png" />
-                </div>
+    <section id="body">
+        <div class="dark-overlay">
+            <!------Heading-------->
+            <div class="container padding-top">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="navbar-header">
+                            <img src="~/SiteIcon/buslogo.png" />
+                        </div>
 
-                <nav class="navbar" role="navigation">
-                    @Html.Partial("_LoginPartial")
-                    <a class="navbar-right btn btn-success" href="@Url.Action("AdminLogin", "Account")">AdminPanel</a>
-                    <a class="navbar-right btn btn-success" href="@Url.Action("TravalRoute","Home")">Home</a>
-                </nav>
-                <hr />
+                        <nav class="navbar" role="navigation">
+                            @Html.Partial("_LoginPartial")
+                            @*<a class="navbar-right btn btn-success" href="@Url.Action("AdminLogin", "Account")">AdminPanel</a>*@
+                            <a class="navbar-right btn btn-success" href="@Url.Action("TravalRoute","Home")">Home</a>
+                        </nav>
+                        <hr />
+                    </div>
+                </div>
+            </div>
+
+            <!-----------body----------->
+            <div class="container body-content">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="well">
+                            <div class="panel panel-success">
+                                <div class="panel-heading">
+                                    @ViewBag.Title
+                                </div>
+                            </div>
+                            @RenderBody()
+                        </div>
+
+                    </div>
+                    <div>
+                        <div class="col-md-3 well">
+                            <div class="panel panel-success">
+                                <div class="panel-heading">
+                                    Available Bus Routes
+                                </div>
+                            </div>
+                            <ul class="list">
+                                <li>Dhaka to Joypurhat</li>
+                                <li>Dhaka to Noakhali</li>
+                                <li>Dhaka to Rajshahi</li>
+                                <li>Dhaka to Maymensing</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3 well">
+                            <div class="panel panel-success">
+                                <div class="panel-heading">
+                                    Available Payment Getway
+                                </div>
+                            </div>
+                            <ul class="list">
+                                <li>Bkash</li>
+                                <li>DBBL</li>
+                                <li>VISA</li>
+                                <li>Master Card</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-
-    <!-----------body----------->
-    <div class="container body-content">
-        <div class="row">
-            <div class="col-md-9">
-                <div class="well">
-                    <div class="panel panel-success">
-                        <div class="panel-heading">
-                      @ViewBag.Title 
-                        </div>
-                    </div>
-                    @RenderBody()
-                </div>
-                
-            </div>
-            <div>
-                <div class="col-md-3 well">
-                    <div class="panel panel-success">
-                        <div class="panel-heading">
-                            Travel routes
-                        </div>
-                    </div>
-                    <ul class="list">
-                        <li>Dhaka to Joypurhat</li>
-                        <li>Dhaka to Noakhali</li>
-                        <li>Dhaka to Rajshahi</li>
-                        <li>Dhaka to Maymensing</li>
-                    </ul>
-                </div>
-                <div class="col-md-3 well">
-                    <div class="panel panel-success">
-                        <div class="panel-heading">
-                            Payment
-                        </div>
-                    </div>
-                        <ul class="list">
-                            <li>Bkash</li>
-                            <li>DBBL</li>
-                            <li>VISA</li>
-                            <li>Master Card</li>
-                        </ul>
-                    </div>
-            </div>
-        </div>
-    </div>
-
+    </section>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
