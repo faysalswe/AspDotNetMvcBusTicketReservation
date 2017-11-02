@@ -7,12 +7,14 @@
     
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/lumino/css/styles.css" rel="stylesheet" />
+    <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+    <link href="~/Content/themes/base/datepicker.css" rel="stylesheet" />
 
+    <script src="~/lumino/js/jquery-1.11.1.min.js"></script>
+    <script src="~/lumino/js/bootstrap.min.js"></script>
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/lumino/js/lumino.glyphs.js"></script>
-    <script src="~/lumino/js/jquery-1.11.1.min.js"></script>
-    <script src="~/lumino/js/bootstrap.min.js"></script>
  
 </head>
 
@@ -29,7 +31,7 @@
                 <a class="navbar-brand" href="#"><span>Admin</span>Panel</a>
                 <ul class="user-menu">
                     <li class="dropdown pull-right">
-                        @Html.Partial("_LoginPartial")
+                        @Html.Partial("_AdminLoginPartial")
                     </li>
                 </ul>
             </div>
@@ -63,6 +65,18 @@
             </div>
         </div>
     </div>
-</body>
 
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jquery-ui")
+@Scripts.Render("~/bundles/bootstrap")
+
+<script>
+    
+    $(function () {
+        $("#datepicker").datepicker();
+    });
+</script>
+@RenderSection("scripts", required: false)
+
+</body>
 </html>

@@ -196,7 +196,6 @@
     <Compile Include="Controllers\DriversController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\RoutesController.cs" />
     <Compile Include="Controllers\TripsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -295,7 +294,9 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="Content\wickedpicker.min.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontello.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="lumino\css\bootstrap-table.css" />
@@ -356,6 +357,9 @@
     <Content Include="AspMvcBusTicketReservationDBDataSet.xss">
       <DependentUpon>AspMvcBusTicketReservationDBDataSet.xsd</DependentUpon>
     </Content>
+    <Content Include="fonts\fontello.eot" />
+    <Content Include="fonts\fontello.ttf" />
+    <Content Include="fonts\fontello.woff" />
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
     <Content Include="Scripts\jquery-1.12.4.js" />
     <Content Include="Scripts\jquery-1.12.4.min.js" />
@@ -370,6 +374,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\wickedpicker.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="SiteIcon\background1.jpg" />
     <Content Include="SiteIcon\background2.jpg" />
@@ -438,10 +443,11 @@
     <Content Include="Views\Account\AdminLogin.cshtml" />
     <Content Include="Views\Home\BookingHistory.cshtml" />
     <Content Include="Views\Booking\Index.cshtml" />
+    <Content Include="Views\Shared\_AdminLoginPartial.cshtml" />
+    <Content Include="Views\Trips\BookingBydate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Report\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

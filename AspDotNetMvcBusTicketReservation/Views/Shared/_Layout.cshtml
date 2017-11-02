@@ -6,8 +6,11 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <link href="~/Content/PassangerLayout.css" rel="stylesheet" />
 
+    <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+    <link href="~/Content/themes/base/datepicker.css" rel="stylesheet" />
+    <link href="~/Content/PassangerLayout.css" rel="stylesheet" />
+    
 </head>
 <body>
     <section id="body">
@@ -77,7 +80,13 @@
         </div>
     </section>
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jquery-ui")
     @Scripts.Render("~/bundles/bootstrap")
+    <script>
+        $(function () {
+            $("#datepicker").datepicker();
+        });
+    </script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

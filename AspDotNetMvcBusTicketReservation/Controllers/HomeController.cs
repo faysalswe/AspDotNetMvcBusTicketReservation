@@ -27,7 +27,7 @@ namespace AspDotNetMvcBusTicketReservation.Controllers
         }
         public IEnumerable<DateTime?> GetTravalDate(int id)
         {
-            DateTime date = Convert.ToDateTime(DateTime.Now.ToString("9-05-2017", CultureInfo.InvariantCulture));
+            DateTime date = DateTime.Now.Date;
 
             var dates = db.Trips1.Where(m => m.Route == id && m.Date >= date).Select(x => x.Date).Distinct().ToList();
             return dates.ToList();
@@ -216,6 +216,10 @@ namespace AspDotNetMvcBusTicketReservation.Controllers
         [Authorize]
         public FileResult GetReport()
         {
+            try
+            {
+
+            
             LocalReport lr = new LocalReport();
             lr.ReportPath = Server.MapPath("~/Report/Report.rdlc");
            
@@ -223,7 +227,8 @@ namespace AspDotNetMvcBusTicketReservation.Controllers
             using (AppDb dc = new AppDb())
             {
                 int id = int.Parse(TempData["bookId"].ToString());
-                cm = dc.Books.Where(x => x.Id == id).ToList();
+                cm = dc.Books.Where(x => x.Id == id ).ToList();
+                TempData["bookId"] = Convert.ToInt32(TempData["bookId"].ToString());
             }
             ReportDataSource rd = new ReportDataSource("BookDataSet", cm);
             lr.DataSources.Add(rd);
@@ -247,7 +252,14 @@ namespace AspDotNetMvcBusTicketReservation.Controllers
                 out streams,
                 out warnings);
 
-            return File(renderedBytes, mimeType);
+                return File(renderedBytes, mimeType);
+            }
+            catch (Exception)
+            {
+
+                throw; ;
+            }
+            
         }
 
 

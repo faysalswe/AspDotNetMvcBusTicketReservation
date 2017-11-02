@@ -125,6 +125,15 @@ namespace AspDotNetMvcBusTicketReservation.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+    
+        public ActionResult BookingBydate(DateTime? date)
+        {
+            if(date == null)
+            {
+                date = DateTime.Now;
+            }
+           return View(db.SpGetBookingListByDate(date).ToList());
+        }
 
         protected override void Dispose(bool disposing)
         {

@@ -31,13 +31,13 @@
                     @using (Html.BeginForm())
                     {
                         <div class="list-group">
-                            <a href="#" class="list-group-item info">
+                            <a class="list-group-item info">
+                                <input type="submit" value="Click here" class="btn btn-success pull-right" />
                                 <h4 class="list-group-item-heading">DBBL</h4>
                                 <p class="list-group-item-text">
                                     DBBL Payment Support.
                                     @Html.HiddenFor(model => model.payment, new { Value = "DBBL" })
                                     @Html.HiddenFor(model => model.TransactionId, new { Value = "D1234567" })
-                                    <input type="submit" value="Click here" class="btn btn-success" />
                                 </p>
                             </a>
                         </div>
@@ -45,16 +45,13 @@
                     @using (Html.BeginForm())
                     {
                         <div class="list-group">
-                            <a href="#" class="list-group-item info">
-
+                            <a href="#" class="list-group-item info" >
+                                <input type="submit" value="Click here" class="btn btn-success pull-right" />
                                 <h4 class="list-group-item-heading">BKASH</h4>
                                 <p class="list-group-item-text">
                                     BKASH Payment Support.
                                     @Html.HiddenFor(model => model.payment, new { Value = "BKASH" })
                                     @Html.HiddenFor(model => model.TransactionId, new { Value = "b123456" })
-
-
-                                    <input type="submit" value="Click here" class="btn btn-success" />
                                 </p>
                             </a>
                         </div>
@@ -63,12 +60,12 @@
                     {
                         <div class="list-group">
                             <a href="#" class="list-group-item info">
+                                <input type="submit" value="Click here" class="btn btn-success pull-right" />
                                 <h4 class="list-group-item-heading">VISA</h4>
                                 <p class="list-group-item-text">
                                     VISA Payment Support.
                                     @Html.HiddenFor(model => model.payment, new { Value = "VISA" })
                                     @Html.HiddenFor(model => model.TransactionId, new { Value = "v123456" })
-                                    <input type="submit" value="Click here" class="btn btn-success" />
                                 </p>
                             </a>
                         </div>
@@ -77,13 +74,12 @@
                     {
                         <div class="list-group">
                             <a href="#" class="list-group-item info">
+                                <input type="submit" value="Click here" class="btn btn-success pull-right" />
                                 <h4 class="list-group-item-heading">MASTER CARD</h4>
                                 <p class="list-group-item-text">
                                     MASTER CARD Payment Support.
                                     @Html.HiddenFor(model => model.payment, new { Value = "MASTER CARD" })
                                     @Html.HiddenFor(model => model.TransactionId, new { Value = "mc12345" })
-
-                                    <input type="submit" value="Click here" class="btn btn-default" />
                                 </p>
                             </a>
                         </div>
