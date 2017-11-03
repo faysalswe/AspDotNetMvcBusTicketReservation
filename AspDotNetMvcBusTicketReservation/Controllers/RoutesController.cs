@@ -10,6 +10,7 @@ using AspDotNetMvcBusTicketReservation.Models;
 
 namespace AspDotNetMvcBusTicketReservation.Controllers
 {
+    [Authorize]
     public class RoutesController : Controller
     {
         private AppDb db = new AppDb();

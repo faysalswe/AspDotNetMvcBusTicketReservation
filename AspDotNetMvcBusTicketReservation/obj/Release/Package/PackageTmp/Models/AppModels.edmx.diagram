@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2fee63cff5de42f6a6b275153c800834" Name="Diagram1">
+        <EntityTypeShape EntityType="AspMvcBusTicketReservationDBModel.AspNetRole" Width="1.75" PointX="7.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AspMvcBusTicketReservationDBModel.AspNetUser" Width="1.75" PointX="5.125" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AspMvcBusTicketReservationDBModel.Book" Width="1.75" PointX="5.125" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AspMvcBusTicketReservationDBModel.Bus" Width="1.5" PointX="0.625" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AspMvcBusTicketReservationDBModel.Driver" Width="1.5" PointX="0.625" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AspMvcBusTicketReservationDBModel.Route" Width="1.5" PointX="0.625" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AspMvcBusTicketReservationDBModel.Trip" Width="1.75" PointX="3" PointY="1.5" IsExpanded="true" />
+        <AssociationConnector Association="AspMvcBusTicketReservationDBModel.FK__tb_Book__UserId__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="AspMvcBusTicketReservationDBModel.FK__tb_Book__TripId__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="AspMvcBusTicketReservationDBModel.FK__tb_Trips__Bus__29572725" ManuallyRouted="false" />
+        <AssociationConnector Association="AspMvcBusTicketReservationDBModel.FK__tb_Trips__Driver__2A4B4B5E" ManuallyRouted="false" />
+        <AssociationConnector Association="AspMvcBusTicketReservationDBModel.FK__tb_Trips__Route__2B3F6F97" ManuallyRouted="false" />
+        <AssociationConnector Association="AspMvcBusTicketReservationDBModel.AspNetUserRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

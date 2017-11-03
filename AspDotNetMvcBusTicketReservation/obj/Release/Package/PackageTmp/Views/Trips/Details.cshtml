@@ -1,0 +1,347 @@
+﻿@model AspDotNetMvcBusTicketReservation.Models.Trip
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Trip</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Time)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Time)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.A1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.A1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.A2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.A2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.A3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.A3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.A4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.A4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.B1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.B1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.B2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.B2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.B3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.B3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.B4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.B4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.C1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.C1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.C2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.C2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.C3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.C3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.C4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.C4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.D1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.D1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.D2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.D2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.D3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.D3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.D4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.D4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.E1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.E1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.E2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.E2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.E3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.E3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.E4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.E4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.G1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.G1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.G2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.G2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.G3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.G3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.G4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.G4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.H1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.H1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.H2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.H2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.H3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.H3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.H4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.H4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.I1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.I1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.I2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.I2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.I3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.I3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.I4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.I4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tb_Bus.SerialNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tb_Bus.SerialNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tb_Driver.DriverSerial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tb_Driver.DriverSerial)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tb_Route.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tb_Route.Title)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

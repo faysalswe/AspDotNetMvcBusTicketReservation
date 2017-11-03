@@ -1,0 +1,616 @@
+﻿@model AspDotNetMvcBusTicketReservation.Models.Trip
+
+@{
+    ViewBag.Title = "SelectSeat";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm())
+{
+<link href="~/Content/seat.css" rel="stylesheet" />
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-1" >
+            <input type="button" class="fixed" value="Gate" />
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <input type="button" class="fixed" value="Driver" />
+            <br />
+            <input type="button" id="A1" class="@{ Write((Model.A1 != null) ? "booked book" : "button button2");}" value="A1" />
+            <input type="button" id="A2" class="@{ Write((Model.A2 != null) ? "booked book" : "button button2");}" value="A2" />
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <input type="button" id="A3" class="@{ Write((Model.A3 != null) ? "booked book" : "button button2");}" value="A3" />
+            <input type="button" id="A4" class="@{ Write((Model.A4 != null) ? "booked book" : "button button2");}" value="A4" />
+            <br />
+            <input type="button" id="B1" class="@{ Write((Model.B1 != null) ? "booked book" : "button button2");}" value="B1" />
+            <input type="button" id="B2" class="@{ Write((Model.B2 != null) ? "booked book" : "button button2");}" value="B2" />
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <input type="button" id="B3" class="@{ Write((Model.B3 != null) ? "booked book" : "button button2");}" value="B3" />
+            <input type="button" id="B4" class="@{ Write((Model.B4 != null) ? "booked book" : "button button2");}" value="B4" />
+            <br />
+            <input type="button" id="C1" class="@{ Write((Model.C1 != null) ? "booked book" : "button button2");}" value="C1" />
+            <input type="button" id="C2" class="@{ Write((Model.C2 != null) ? "booked book" : "button button2");}" value="C2" />
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <input type="button" id="C3" class="@{ Write((Model.C3 != null) ? "booked book" : "button button2");}" value="C3" />
+            <input type="button" id="C4" class="@{ Write((Model.C4 != null) ? "booked book" : "button button2");}" value="C4" />
+            <br />
+            <input type="button" id="D1" class="@{ Write((Model.D1 != null) ? "booked book" : "button button2");}" value="D1" />
+            <input type="button" id="D2" class="@{ Write((Model.D2 != null) ? "booked book" : "button button2");}" value="D2" />
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <input type="button" id="D3" class="@{ Write((Model.D3 != null) ? "booked book" : "button button2");}" value="D3" />
+            <input type="button" id="D4" class="@{ Write((Model.D4 != null) ? "booked book" : "button button2");}" value="D4" />
+            <br />
+            <input type="button" id="E1" class="@{ Write((Model.E1 != null) ? "booked book" : "button button2");}" value="E1" />
+            <input type="button" id="E2" class="@{ Write((Model.E2 != null) ? "booked book" : "button button2");}" value="E2" />
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <input type="button" id="E3" class="@{ Write((Model.E3 != null) ? "booked book" : "button button2");}" value="E3" />
+            <input type="button" id="E4" class="@{ Write((Model.E4 != null) ? "booked book" : "button button2");}" value="E4" />
+            <br />
+            <input type="button" id="F1" class="@{ Write((Model.F1 != null) ? "booked book" : "button button2");}" value="F1" />
+            <input type="button" id="F2" class="@{ Write((Model.F2 != null) ? "booked book" : "button button2");}" value="F2" />
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <input type="button" id="F3" class="@{ Write((Model.F3 != null) ? "booked book" : "button button2");}" value="F3" />
+            <input type="button" id="F4" class="@{ Write((Model.F4 != null) ? "booked book" : "button button2");}" value="F4" />
+            <br />
+            <input type="button" id="G1" class="@{ Write((Model.G1 != null) ? "booked book" : "button button2");}" value="G1" />
+            <input type="button" id="G2" class="@{ Write((Model.G2 != null) ? "booked book" : "button button2");}" value="G2" />
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <input type="button" id="G3" class="@{ Write((Model.G3 != null) ? "booked book" : "button button2");}" value="G3" />
+            <input type="button" id="G4" class="@{ Write((Model.G4 != null) ? "booked book" : "button button2");}" value="G4" />
+            <br />
+            <input type="button" id="H1" class="@{ Write((Model.H1 != null) ? "booked book" : "button button2");}" value="H1" />
+            <input type="button" id="H2" class="@{ Write((Model.H2 != null) ? "booked book" : "button button2");}" value="H2" />
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <input type="button" id="H3" class="@{ Write((Model.H3 != null) ? "booked book" : "button button2");}" value="H3" />
+            <input type="button" id="H4" class="@{ Write((Model.H4 != null) ? "booked book" : "button button2");}" value="H4" />
+            <br />
+            <input type="button" id="I1" class="@{ Write((Model.I1 != null) ? "booked book" : "button button2");}" value="I1" />
+            <input type="button" id="I2" class="@{ Write((Model.I2 != null) ? "booked book" : "button button2");}" value="I2" />
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <input type="button" id="I3" class="@{ Write((Model.I3 != null) ? "booked book" : "button button2");}" value="I3" />
+            <input type="button" id="I4" class="@{ Write((Model.I4 != null) ? "booked book" : "button button2");}" value="I4" />
+        </div>
+        <input type="hidden" id="seatlist" name="seatlist" />
+        <div class="col-md-5" >
+            <br />
+            <h4>Fare:&nbsp;<span id="total"></span></h4>
+            <br />
+            <h4>SelectSeat:&nbsp;<span id="seats"></span></h4>
+            <br />
+            <br />
+            @Html.ActionLink("Cancel Selection","SelectSeat",null, new { @Class = "btn btn-danger btn-lg  col-md-8" })
+            <br />
+            <br />
+            <br />
+            <br />
+            <input type="submit" value="Payment" class="btn btn-primary btn-lg  col-md-8" />
+            <br />
+            <br />
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <h4 id="msg" style="color:darkred"></h4>
+    </div>
+ </div>
+
+}
+<script type="text/javascript" src="~/Scripts/jquery-1.12.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var i = 0;
+        var totalfare = 0;
+        var fare =@Session["Fare"].ToString();
+        var seats = "";
+        $('#A1').click(function () {
+            if (i == 4) {
+                $("#msg").text("Only 4 seat you can select.");
+                return false;
+            }
+            i++;
+            totalfare = i * fare;
+            $("#total").text(totalfare);
+            seats = seats + "A1,";
+            $('#A1').removeClass("button2");
+            $('#seatlist').val(seats);
+            $('#seats').text(seats);
+        });
+        $('#A2').click(function () {
+            if (i == 4) {
+                $("#msg").text("Only 4 seat you can select.");
+                return false;
+            }
+            i++;
+            totalfare = i * fare;
+            $("#total").text(totalfare);
+            seats = seats + "A2,";
+            $('#A2').removeClass("button2");
+            $('#seatlist').val(seats);
+            $('#seats').text(seats);
+        });
+        $('#A3').click(function () {
+            if (i == 4) {
+                $("#msg").text("Only 4 seat you can select.");
+                return false;
+            }
+            i++;
+            totalfare = i * fare;
+            $("#total").text(totalfare);
+            seats = seats + "A3,";
+            $('#A3').removeClass("button2");
+            $('#seatlist').val(seats);
+            $('#seats').text(seats);
+        });
+        $('#A4').click(function () {
+            if (i == 4) {
+                $("#msg").text("Only 4 seat you can select.");
+                return false;
+            }
+            i++;
+            totalfare = i * fare;
+            $("#total").text(totalfare);
+            seats = seats + "A4,";
+            $('#A4').removeClass("button2");
+            $('#seatlist').val(seats);
+            $('#seats').text(seats);
+        });
+
+        $('#B1').click(function () {
+            if (i == 4) {
+                $("#msg").text("Only 4 seat you can select.");
+                return false;
+            }
+            i++;
+            totalfare = i * fare;
+            $("#total").text(totalfare);
+            seats = seats + "B1,";
+            $('#B1').removeClass("button2");
+            $('#seatlist').val(seats);
+            $('#seats').text(seats);
+        });
+        $('#B2').click(function () {
+            if (i == 4) {
+                $("#msg").text("Only 4 seat you can select.");
+                return false;
+            }
+            i++;
+            totalfare = i * fare;
+            $("#total").text(totalfare);
+
+            seats = seats + "B2,";
+            $('#B2').removeClass("button2");
+            $('#seatlist').val(seats);
+            $('#seats').text(seats);
+        });
+        $('#B3').click(function () {
+            if (i == 4) {
+                $("#msg").text("Only 4 seat you can select.");
+                return false;
+            }
+            i++;
+            totalfare = i * fare;
+            $("#total").text(totalfare);
+
+            seats = seats + "B3,";
+            $('#B3').removeClass("button2");
+            $('#seatlist').val(seats);
+            $('#seats').text(seats);
+        });
+        $('#B4').click(function () {
+            if (i == 4) {
+                $("#msg").text("Only 4 seat you can select.");
+                return false;
+            }
+            i++;
+            totalfare = i * fare;
+            $("#total").text(totalfare);
+
+            seats = seats + "B4,";
+            $('#B4').removeClass("button2");
+            $('#seatlist').val(seats);
+            $('#seats').text(seats);
+        });
+
+        $('#C1').click(function () {
+            if (i == 4) {
+                $("#msg").text("Only 4 seat you can select.");
+                return false;
+            }
+            i++;
+            totalfare = i * fare;
+            $("#total").text(totalfare);
+
+            seats = seats + "C1,";
+            $('#C1').removeClass("button2");
+            $('#seatlist').val(seats);
+            $('#seats').text(seats);
+        });
+        $('#C2').click(function () {
+            if (i == 4) {
+                $("#msg").text("Only 4 seat you can select.");
+                return false;
+            }
+            i++;
+            totalfare = i * fare;
+            $("#total").text(totalfare);
+
+            seats = seats + "C2,";
+            $('#C2').removeClass("button2");
+            $('#seatlist').val(seats);
+            $('#seats').text(seats);
+        });
+        $('#C3').click(function () {
+            if (i == 4) {
+                $("#msg").text("Only 4 seat you can select.");
+                return false;
+            }
+            i++;
+            totalfare = i * fare;
+            $("#total").text(totalfare);
+
+            seats = seats + "C3,";
+            $('#C3').removeClass("button2");
+            $('#seatlist').val(seats);
+            $('#seats').text(seats);
+        });
+        $('#C4').click(function () {
+            if (i == 4) {
+                $("#msg").text("Only 4 seat you can select.");
+                return false;
+            }
+            i++;
+            totalfare = i * fare;
+            $("#total").text(totalfare);
+
+            seats = seats + "C4,";
+            $('#C4').removeClass("button2");
+            $('#seatlist').val(seats);
+            $('#seats').text(seats);
+        });
+
+        $('#D1').click(function () {
+            if (i == 4) {
+                $("#msg").text("Only 4 seat you can select.");
+                return false;
+            }
+            i++;
+            totalfare = i * fare;
+            $("#total").text(totalfare);
+
+            seats = seats + "D1,";
+            $('#D1').removeClass("button2");
+            $('#seatlist').val(seats);
+            $('#seats').text(seats);
+        });
+        $('#D2').click(function () {
+            if (i == 4) {
+                $("#msg").text("Only 4 seat you can select.");
+                return false;
+            }
+            i++;
+            totalfare = i * fare;
+            $("#total").text(totalfare);
+
+            seats = seats + "D2,";
+            $('#D2').removeClass("button2");
+            $('#seatlist').val(seats);
+            $('#seats').text(seats);
+        });
+        $('#D3').click(function () {
+            if (i == 4) {
+                $("#msg").text("Only 4 seat you can select.");
+                return false;
+            }
+            i++;
+            totalfare = i * fare;
+            $("#total").text(totalfare);
+
+            seats = seats + "D3,";
+            $('#D3').removeClass("button2");
+            $('#seatlist').val(seats);
+            $('#seats').text(seats);
+        });
+        $('#D4').click(function () {
+            if (i == 4) {
+                $("#msg").text("Only 4 seat you can select.");
+                return false;
+            }
+            i++;
+            totalfare = i * fare;
+            $("#total").text(totalfare);
+
+            seats = seats + "D4,";
+            $('#D4').removeClass("button2");
+            $('#seatlist').val(seats);
+            $('#seats').text(seats);
+        });
+
+        $('#E1').click(function () {
+            if (i == 4) {
+                $("#msg").text("Only 4 seat you can select.");
+                return false;
+            }
+            i++;
+            totalfare = i * fare;
+            $("#total").text(totalfare);
+
+            seats = seats + "E1,";
+            $('#E1').removeClass("button2");
+            $('#seatlist').val(seats);
+            $('#seats').text(seats);
+        });
+        $('#E2').click(function () {
+            if (i == 4) {
+                $("#msg").text("Only 4 seat you can select.");
+                return false;
+            }
+            i++;
+            totalfare = i * fare;
+            $("#total").text(totalfare);
+
+            seats = seats + "E2,";
+            $('#E2').removeClass("button2");
+            $('#seatlist').val(seats);
+            $('#seats').text(seats);
+        });
+        $('#E3').click(function () {
+            if (i == 4) {
+                $("#msg").text("Only 4 seat you can select.");
+                return false;
+            }
+            i++;
+            totalfare = i * fare;
+            $("#total").text(totalfare);
+
+            seats = seats + "E3,";
+            $('#E3').removeClass("button2");
+            $('#seatlist').val(seats);
+            $('#seats').text(seats);
+        });
+        $('#E4').click(function () {
+            if (i == 4) {
+                $("#msg").text("Only 4 seat you can select.");
+                return false;
+            }
+            i++;
+            totalfare = i * fare;
+            $("#total").text(totalfare);
+
+            seats = seats + "E4,";
+            $('#E4').removeClass("button2");
+            $('#seatlist').val(seats);
+            $('#seats').text(seats);
+        });
+
+        $('#F1').click(function () {
+            if (i == 4) {
+                $("#msg").text("Only 4 seat you can select.");
+                return false;
+            }
+            i++;
+            totalfare = i * fare;
+            $("#total").text(totalfare);
+
+            seats = seats + "F1,";
+            $('#F1').removeClass("button2");
+            $('#seatlist').val(seats);
+            $('#seats').text(seats);
+        });
+        $('#F2').click(function () {
+            if (i == 4) {
+                $("#msg").text("Only 4 seat you can select.");
+                return false;
+            }
+            i++;
+            totalfare = i * fare;
+            $("#total").text(totalfare);
+
+            seats = seats + "F2,";
+            $('#F2').removeClass("button2");
+            $('#seatlist').val(seats);
+            $('#seats').text(seats);
+        });
+        $('#F3').click(function () {
+            if (i == 4) {
+                $("#msg").text("Only 4 seat you can select.");
+                return false;
+            }
+            i++;
+            totalfare = i * fare;
+            $("#total").text(totalfare);
+
+            seats = seats + "F3,";
+            $('#F3').removeClass("button2");
+            $('#seatlist').val(seats);
+            $('#seats').text(seats);
+        });
+        $('#F4').click(function () {
+            if (i == 4) {
+                $("#msg").text("Only 4 seat you can select.");
+                return false;
+            }
+            i++;
+            totalfare = i * fare;
+            $("#total").text(totalfare);
+
+            seats = seats + "F4,";
+            $('#F4').removeClass("button2");
+            $('#seatlist').val(seats);
+            $('#seats').text(seats);
+        });
+
+        $('#G1').click(function () {
+            if (i == 4) {
+                $("#msg").text("Only 4 seat you can select.");
+                return false;
+            }
+            i++;
+            totalfare = i * fare;
+            $("#total").text(totalfare);
+
+            seats = seats + "G1,";
+            $('#G1').removeClass("button2");
+            $('#seatlist').val(seats);
+            $('#seats').text(seats);
+        });
+        $('#G2').click(function () {
+            if (i == 4) {
+                $("#msg").text("Only 4 seat you can select.");
+                return false;
+            }
+            i++;
+            totalfare = i * fare;
+            $("#total").text(totalfare);
+
+            seats = seats + "G2,";
+            $('#G2').removeClass("button2");
+            $('#seatlist').val(seats);
+            $('#seats').text(seats);
+        });
+        $('#G3').click(function () {
+            if (i == 4) {
+                $("#msg").text("Only 4 seat you can select.");
+                return false;
+            }
+            i++;
+            totalfare = i * fare;
+            $("#total").text(totalfare);
+
+            seats = seats + "G3,";
+            $('#G3').removeClass("button2");
+            $('#seatlist').val(seats);
+            $('#seats').text(seats);
+        });
+        $('#G4').click(function () {
+            if (i == 4) {
+                $("#msg").text("Only 4 seat you can select.");
+                return false;
+            }
+            i++;
+            totalfare = i * fare;
+            $("#total").text(totalfare);
+
+            seats = seats + "G4,";
+            $('#G4').removeClass("button2");
+            $('#seatlist').val(seats);
+            $('#seats').text(seats);
+        });
+
+        $('#H1').click(function () {
+            if (i == 4) {
+                $("#msg").text("Only 4 seat you can select.");
+                return false;
+            }
+            i++;
+            totalfare = i * fare;
+            $("#total").text(totalfare);
+
+            seats = seats + "H1,";
+            $('#H1').removeClass("button2");
+            $('#seatlist').val(seats);
+            $('#seats').text(seats);
+        });
+        $('#H2').click(function () {
+            if (i == 4) {
+                $("#msg").text("Only 4 seat you can select.");
+                return false;
+            }
+            i++;
+            totalfare = i * fare;
+            $("#total").text(totalfare);
+
+            seats = seats + "H2,";
+            $('#H2').removeClass("button2");
+            $('#seatlist').val(seats);
+            $('#seats').text(seats);
+        });
+        $('#H3').click(function () {
+            if (i == 4) {
+                $("#msg").text("Only 4 seat you can select.");
+                return false;
+            }
+            i++;
+            totalfare = i * fare;
+            $("#total").text(totalfare);
+
+            seats = seats + "H3,";
+            $('#H3').removeClass("button2");
+            $('#seatlist').val(seats);
+            $('#seats').text(seats);
+        });
+        $('#H4').click(function () {
+            if (i == 4) {
+                $("#msg").text("Only 4 seat you can select.");
+                return false;
+            }
+            i++;
+            totalfare = i * fare;
+            $("#total").text(totalfare);
+
+            seats = seats + "H4,";
+            $('#H4').removeClass("button2");
+            $('#seatlist').val(seats);
+            $('#seats').text(seats);
+        });
+        $('#I1').click(function () {
+            if (i == 4) {
+                $("#msg").text("Only 4 seat you can select.");
+                return false;
+            }
+            i++;
+            totalfare = i * fare;
+            $("#total").text(totalfare);
+
+            seats = seats + "I1,";
+            $('#I1').removeClass("button2");
+            $('#seatlist').val(seats);
+            $('#seats').text(seats);
+        });
+        $('#I2').click(function () {
+            if (i == 4) {
+                $("#msg").text("Only 4 seat you can select.");
+                return false;
+            }
+            i++;
+            totalfare = i * fare;
+            $("#total").text(totalfare);
+
+            seats = seats + "I2,";
+            $('#I2').removeClass("button2");
+            $('#seatlist').val(seats);
+            $('#seats').text(seats);
+        });
+        $('#I3').click(function () {
+            if (i == 4) {
+                $("#msg").text("Only 4 seat you can select.");
+                return false;
+            }
+            i++;
+            totalfare = i * fare;
+            $("#total").text(totalfare);
+
+            seats = seats + "H3,";
+            $('#I3').removeClass("button2");
+            $('#seatlist').val(seats);
+            $('#seats').text(seats);
+        });
+        $('#I4').click(function () {
+            if (i == 4) {
+                $("#msg").text("Only 4 seat you can select.");
+                return false;
+            }
+            i++;
+            totalfare = i * fare;
+            $("#total").text(totalfare);
+            seats = seats + "I4,";
+            $('#I4').removeClass("button2");
+            $('#seatlist').val(seats);
+            $('#seats').text(seats);
+        });
+
+    });
+
+</script>

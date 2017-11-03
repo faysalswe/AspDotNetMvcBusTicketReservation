@@ -1,0 +1,22 @@
+
+body {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    background: url('../siteicon/background1.jpg') no-repeat top;
+    background-size: cover;
+    background-attachment:fixed;
+}
+
+#body .dark-overlay {
+    background-color: rgba(44, 62, 80, 0.8);
+    min-height: -webkit-fill-available;
+}
+
+.padding-top{
+    padding-top:76px;
+}
+
+.list {
+    color: darkblue;
+}

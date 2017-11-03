@@ -1,0 +1,36 @@
+﻿@model AspDotNetMvcBusTicketReservation.Models.Book
+
+@{
+    ViewBag.Title = "Payment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3 style="color:forestgreen">PaymentSuccessful</h3>
+
+    <table class="table">
+        <tr>
+            <td> @Html.DisplayNameFor(model => model.Fare)</td>
+            <td> @Html.DisplayFor(model => model.Fare)</td>
+        </tr>
+        <tr>
+            <td> @Html.DisplayNameFor(model => model.Date)</td>
+            <td> @Html.DisplayFor(model => model.Date)</td>
+        </tr>
+        <tr>
+            <td> @Html.DisplayNameFor(model => model.seatList) </td>
+            <td> @Html.DisplayFor(model => model.seatList)</td>
+        </tr>
+        <tr>
+            <td> @Html.DisplayNameFor(model => model.payment)</td>
+            <td> @Html.DisplayFor(model => model.payment)</td>
+        </tr>
+        <tr>
+            <td> @Html.DisplayNameFor(model => model.TransactionId)</td>
+            <td> @Html.DisplayFor(model => model.TransactionId)</td>
+        </tr>
+    </table>
+
+    <div>
+    <a class="btn btn-success" href="@Url.Action("GetReport")"> Download Ticket </a>
+    </div>
+

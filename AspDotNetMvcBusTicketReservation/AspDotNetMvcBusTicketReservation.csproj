@@ -294,9 +294,7 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
-    <Content Include="Content\wickedpicker.min.css" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\fontello.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="lumino\css\bootstrap-table.css" />
@@ -357,13 +355,11 @@
     <Content Include="AspMvcBusTicketReservationDBDataSet.xss">
       <DependentUpon>AspMvcBusTicketReservationDBDataSet.xsd</DependentUpon>
     </Content>
-    <Content Include="fonts\fontello.eot" />
-    <Content Include="fonts\fontello.ttf" />
-    <Content Include="fonts\fontello.woff" />
+    <None Include="Properties\PublishProfiles\AspDotNetMvcBusTicketReservation20171102045504 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\BusTicketReservation - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
     <Content Include="Scripts\jquery-1.12.4.js" />
     <Content Include="Scripts\jquery-1.12.4.min.js" />
-    <Content Include="Scripts\jquery-1.12.4.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
@@ -374,7 +370,6 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\wickedpicker.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="SiteIcon\background1.jpg" />
     <Content Include="SiteIcon\background2.jpg" />
@@ -384,7 +379,9 @@
     <Content Include="SiteIcon\buslogo.png" />
     <Content Include="Content\PassangerLayout.css" />
     <Content Include="Content\seat.css" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
