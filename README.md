@@ -10,3 +10,4 @@
     | -----------------|:-------------:|
     |faysalme@mail.com | passwd123     |
     
+ 6. project hosted on azure http://busticketreservation.azurewebsites.net/
