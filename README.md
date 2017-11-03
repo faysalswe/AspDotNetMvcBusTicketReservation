@@ -4,6 +4,9 @@
 2. Restore AspMvcBusTicketReservationDB.mdf using MSSQL Server
 3. In Web.config file give your SQLSERVER name as DataSource value.
 4. Run app
-5. For Admin panel navigate   localhost:portnumber:Account/AdminLogin
-    username: faysalme@mail.com
-    password: passwd123
+5. For Admin panel navigate this action Account/AdminLogin
+
+    | username         | password      |
+    | -----------------|:-------------:|
+    |faysalme@mail.com | passwd123     |
+    
