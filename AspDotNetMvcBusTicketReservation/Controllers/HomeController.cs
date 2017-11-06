@@ -221,7 +221,7 @@ namespace AspDotNetMvcBusTicketReservation.Controllers
 
             
             LocalReport lr = new LocalReport();
-            lr.ReportPath = Server.MapPath("~/Report/Report.rdlc");
+            lr.ReportPath = Server.MapPath("~/Content/Report/Report.rdlc");
            
             List<Book> cm = new List<Book>();
             using (AppDb dc = new AppDb())
@@ -266,7 +266,7 @@ namespace AspDotNetMvcBusTicketReservation.Controllers
         public FileResult GetReportById(int bookingid)
         {
             LocalReport lr = new LocalReport();
-            lr.ReportPath = Server.MapPath("~/Report/Report.rdlc");
+            lr.ReportPath = Server.MapPath("~/Content/Report/Report.rdlc");
 
             List<Book> cm = new List<Book>();
             using (AppDb dc = new AppDb())
